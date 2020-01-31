@@ -1,4 +1,4 @@
-package Support.PDF;
+package support_pdf;
 
 import java.awt.AWTException;
 import java.io.File;
