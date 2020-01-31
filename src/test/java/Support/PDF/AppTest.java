@@ -1,20 +1,19 @@
-package Final;
+package Support.PDF;
 
 import java.awt.AWTException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
-import javax.imageio.ImageIO;
-import javax.swing.text.html.HTMLDocument.Iterator;
+
 
 import org.apache.maven.surefire.shade.common.org.apache.commons.io.FileUtils;
-import org.openqa.selenium.Alert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Rectangle;
+
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,15 +21,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 
 //comment the above line and uncomment below line to use Chrome
 
 //import org.openqa.selenium.chrome.ChromeDriver;
 
-public class PDFUpload {
+public class AppTest {
 //private static final WebElement WebElement = null;
 
 public static void main(String[] args) throws InterruptedException, AWTException, IOException {
