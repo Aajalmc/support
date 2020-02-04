@@ -8,7 +8,7 @@ import java.util.Set;
 
 
 import org.apache.maven.surefire.shade.common.org.apache.commons.io.FileUtils;
-
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -30,7 +30,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class AppTest {
 //private static final WebElement WebElement = null;
-
+	@Test
 public static void main(String[] args) throws InterruptedException, AWTException, IOException {
 	
 System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
