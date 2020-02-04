@@ -1,4 +1,4 @@
-package support_pdf;
+package support_automation;
 
 import java.awt.AWTException;
 import java.io.File;
@@ -28,7 +28,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 //import org.openqa.selenium.chrome.ChromeDriver;
 
-public class AppTest {
+public class App {
 //private static final WebElement WebElement = null;
 
 public static void main(String[] args) throws InterruptedException, AWTException, IOException {
@@ -53,13 +53,13 @@ WebElement Username = driver.findElement(By.xpath("//*[@id=\"ptcSecureUser\"]"))
 
 Username.clear();
 
-Username.sendKeys("amc");
+Username.sendKeys("abc");
 
 WebElement Password = driver.findElement(By.xpath("//*[@id=\"ptcSecurePass\"]"));
 
 Password.clear();
 
-Password.sendKeys("Yeshuachrist!7");
+Password.sendKeys("123");
 
 WebElement Login = driver.findElement(By.xpath("//*[@id=\"loginSubmit\"]"));
 
