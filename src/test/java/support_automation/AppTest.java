@@ -33,7 +33,7 @@ public class AppTest {
 	@Test
 public void test() throws InterruptedException, AWTException, IOException {
 	
-System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
 
 WebDriver driver = new ChromeDriver();
 
@@ -145,7 +145,7 @@ for (String handle : handles1) {
 	
 	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     //The below method will save the screen shot in C drive with name "screenshot.png"
-    FileUtils.copyFile(scrFile, new File("D:\\share\\Sitecore_Automation\\Selenium_Screenshot\\screenshot.png"));
+    FileUtils.copyFile(scrFile, new File("D:\\Selenium_Screenshot\\screenshot.png"));
     System.out.println("Screenshot taken");
     Thread.sleep(1000);
     
@@ -164,7 +164,7 @@ for (String handle : handles1) {
     
     File scrFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     //The below method will save the screen shot in d drive with name "screenshot.png"
-    FileUtils.copyFile(scrFile1, new File("D:\\share\\Sitecore_Automation\\Selenium_Screenshot\\aa.png"));
+    FileUtils.copyFile(scrFile1, new File("D:\\Selenium_Screenshot\\aa.png"));
     System.out.println("Screenshot taken");
     Thread.sleep(1000);
     
@@ -198,7 +198,7 @@ for (String handle : handles1) {
        {
        File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, -document.body.scrollHeight)");
-       FileUtils.copyFile(scrFile2, new File("D:\\share\\Sitecore_Automation\\Selenium_Screenshot\\screenshot["+ a +"].png"));
+       FileUtils.copyFile(scrFile2, new File("D:\\Selenium_Screenshot\\screenshot["+ a +"].png"));
        
      }
      
