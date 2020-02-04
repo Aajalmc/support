@@ -49,17 +49,21 @@ String baseUrl = "https://support.ptc.com/";
 
 driver.get(baseUrl);
 
-WebElement Username = driver.findElement(By.xpath("//*[@id=\"ptcSecureUser\"]"));
 
-Username.clear();
+System.out.println("---------Getting user id from Jenkins---------");
+//Username.sendKeys("abc");
+WebElement id = driver.findElement(By.id("ptcSecureUser"));
+id.clear();
+id.click();
+id.sendKeys(System.getProperty("Id"));
 
-Username.sendKeys("abc");
 
-WebElement Password = driver.findElement(By.xpath("//*[@id=\"ptcSecurePass\"]"));
-
-Password.clear();
-
-Password.sendKeys("123");
+//Password.sendKeys("123");
+System.out.println("---------Getting password from Jenkins---------");
+WebElement pass = driver.findElement(By.id("ptcSecurePass"));
+pass.clear();
+pass.click();
+pass.sendKeys(System.getProperty("Password"));
 
 WebElement Login = driver.findElement(By.xpath("//*[@id=\"loginSubmit\"]"));
 
@@ -89,7 +93,7 @@ for (String handle : handles) {
 
 
 WebElement Search = driver.findElement(By.id("searchInput"));
-Search.sendKeys("Installing ThingWorx® Navigate");
+Search.sendKeys(System.getProperty("Title"));
 Thread.sleep(2000);
 Search.sendKeys(Keys.ENTER);
 

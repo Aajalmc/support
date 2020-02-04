@@ -44,8 +44,9 @@
 						<driverType>remotechrome</driverType>
 						<remoteDriverURL>http://localhost:4444/wd/hub</remoteDriverURL>
 						<baseUrl>${selenium.base.url}</baseUrl>
-						<Url>${Url}</Url>
-						<version>${version}</version>
+						<Id>${Id}</Id>
+						<Password>${Password}</Password>
+						<Title>${Title}</Title>
 					</systemPropertyVariables>
 				</configuration>
 				<executions>
