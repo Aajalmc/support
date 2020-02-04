@@ -31,7 +31,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class App {
 //private static final WebElement WebElement = null;
 	@Test
-public static void main(String[] args) throws InterruptedException, AWTException, IOException {
+public static void test(String[] args) throws InterruptedException, AWTException, IOException {
 	
 System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
 
