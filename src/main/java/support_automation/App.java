@@ -48,7 +48,7 @@ driver.manage().window().maximize();
 String baseUrl = "https://support.ptc.com/";
 
 driver.get(baseUrl);
-
+Thread.sleep(3000);
 WebElement Username = driver.findElement(By.xpath("//*[@id=\"ptcSecureUser\"]"));
 
 Username.clear();
