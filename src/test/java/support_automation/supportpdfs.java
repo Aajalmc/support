@@ -3,11 +3,9 @@ package support_automation;
 import java.awt.AWTException;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
@@ -22,8 +20,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -34,7 +30,7 @@ import java.util.List;
 public class supportpdfs {
 //private static final WebElement WebElement = null;
 @Test
-public void test(String[] args) throws InterruptedException, AWTException, IOException {
+public void test() throws InterruptedException, AWTException, IOException {
 	
 System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
 
