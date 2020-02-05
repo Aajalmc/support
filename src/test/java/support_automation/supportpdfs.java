@@ -3,9 +3,9 @@ package support_automation;
 import java.awt.AWTException;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
@@ -20,8 +20,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.util.List;
 
 //comment the above line and uncomment below line to use Chrome
 
