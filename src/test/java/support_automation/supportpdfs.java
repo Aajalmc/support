@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -32,8 +33,8 @@ import java.util.List;
 
 public class supportpdfs {
 //private static final WebElement WebElement = null;
-
-public static void main(String[] args) throws InterruptedException, AWTException, IOException {
+@Test
+public void test(String[] args) throws InterruptedException, AWTException, IOException {
 	
 System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
 
