@@ -149,7 +149,7 @@ for (String handle : handles1) {
 	
 	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     //The below method will save the screen shot in C drive with name "screenshot.png"
-    FileUtils.copyFile(scrFile, new File("\\ppumsv-win16jen\\Selenium_Screenshot\\Screenshot1.png"));
+    FileUtils.copyFile(scrFile, new File("D:\\Selenium_Screenshot\\Screenshot1.png"));
     System.out.println("Screenshot taken of the search result");
     Thread.sleep(1000);
     
@@ -168,7 +168,7 @@ for (String handle : handles1) {
     
     File scrFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     //The below method will save the screen shot in d drive with name "screenshot.png"
-    FileUtils.copyFile(scrFile1, new File("\\ppumsv-win16jen\\Selenium_Screenshot\\Screenshot2.png"));
+    FileUtils.copyFile(scrFile1, new File("D:\\Selenium_Screenshot\\Screenshot2.png"));
     System.out.println("Screenshot of detail page of search result");
     Thread.sleep(1000);
     
@@ -195,13 +195,13 @@ for (String handle : handles1) {
     	driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/a["+ i +"]")).click();	
         File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         //The below method will save the screen shot in C drive with name "screenshot.png"
-        FileUtils.copyFile(scrFile2, new File("\\ppumsv-win16jen\\Selenium_Screenshot\\ScreenshotPdfs["+ i +"].png"));
+        FileUtils.copyFile(scrFile2, new File("D:\\Selenium_Screenshot\\ScreenshotPdfs["+ i +"].png"));
         System.out.println("Screenshot of pdf ["+ i +"]");
         Thread.sleep(1000);
         driver.navigate().back();
       
     }
-    System.out.println("Screenshots are availabe here : \\ppumsv-win16jen\\Selenium_Screenshot");
+    System.out.println("Screenshots are availabe here : \\ppumsv-Win16Jen\\Selenium_Screenshot");
 }
 }
 
