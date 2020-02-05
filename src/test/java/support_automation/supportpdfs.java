@@ -5,15 +5,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
 
-import org.apache.maven.surefire.shade.common.org.apache.commons.io.FileUtils;
-import org.junit.Test;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
-
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,36 +21,38 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-
+import java.util.List;
 
 //comment the above line and uncomment below line to use Chrome
 
 //import org.openqa.selenium.chrome.ChromeDriver;
 
-public class AppTest {
+public class supportpdfs {
 //private static final WebElement WebElement = null;
-	@Test
-public void test() throws InterruptedException, AWTException, IOException {
+
+public static void main(String[] args) throws InterruptedException, AWTException, IOException {
 	
 System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
 
 WebDriver driver = new ChromeDriver();
+driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 ChromeOptions options = new ChromeOptions();
 options.addArguments("--incognito");
 DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
-
 driver.manage().window().maximize();
+
 
 String baseUrl = "https://support.ptc.com/";
 
 driver.get(baseUrl);
 
-
-System.out.println("---------Getting user id from Jenkins---------");
+System.out.println("Getting user id and password from Jenkins");
 //Username.sendKeys("abc");
 WebElement id = driver.findElement(By.id("ptcSecureUser"));
 id.clear();
@@ -59,7 +61,6 @@ id.sendKeys(System.getProperty("Id"));
 
 
 //Password.sendKeys("123");
-System.out.println("---------Getting password from Jenkins---------");
 WebElement pass = driver.findElement(By.id("ptcSecurePass"));
 pass.clear();
 pass.click();
@@ -69,7 +70,7 @@ WebElement Login = driver.findElement(By.xpath("//*[@id=\"loginSubmit\"]"));
 
 Login.click();
 
-
+System.out.println("Logged in succesfully");
 
 JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -96,7 +97,7 @@ WebElement Search = driver.findElement(By.id("searchInput"));
 Search.sendKeys(System.getProperty("Title"));
 Thread.sleep(2000);
 Search.sendKeys(Keys.ENTER);
-
+System.out.println("Title searched successfully");
 Set<String> handles1 = driver.getWindowHandles();
 String currentHandle1 = driver.getWindowHandle();
 for (String handle : handles1) {
@@ -115,13 +116,17 @@ for (String handle : handles1) {
     
     Thread.sleep(1000);
     
+    //Click on one week ago filter 
+    
     JavascriptExecutor js1 = (JavascriptExecutor) driver;
 
-    js1.executeScript("window.scrollBy(0,3000)");
+    js1.executeScript("window.scrollBy(0,5000)");
     
     
-  //Click on one month ago filter 
-    driver.findElement(By.xpath("//*[@id=\"LastModifiedTime_ChkGroup_One Month Ago - One Week Ago\"]")).click();
+    Thread.sleep(2000);
+    
+ 
+    driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[2]/div/div/div/div/div[2]/div/div[8]/fieldset/div/div[5]/label/input")).click();
     
     Thread.sleep(1000);
   
@@ -132,7 +137,7 @@ for (String handle : handles1) {
     
     //Remove reference doc
     
-    driver.findElement(By.xpath("//*[@id=\"searchbreadcrumbs\"]/span[1]/input")).click();
+   // driver.findElement(By.xpath("//*[@id=\"searchbreadcrumbs\"]/span[1]/input")).click();
     
     Thread.sleep(1000);
   
@@ -140,7 +145,7 @@ for (String handle : handles1) {
 	WebElement ele = driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/a"));
 	//Create object 'action' of an Actions class
 	Actions action = new Actions(driver);
-	//Mouse hover on an element
+	//Mousehover on an element
 	action.moveToElement(ele).perform();
 	
 	Thread.sleep(2000);
@@ -149,14 +154,14 @@ for (String handle : handles1) {
 	
 	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     //The below method will save the screen shot in C drive with name "screenshot.png"
-    FileUtils.copyFile(scrFile, new File("D:\\Selenium_Screenshot\\screenshot.png"));
-    System.out.println("Screenshot taken");
+    FileUtils.copyFile(scrFile, new File("D:\\Selenium Screenshot\\Screenshot1.png"));
+    System.out.println("Screenshot taken of the search result");
     Thread.sleep(1000);
     
     //Click on the pdf link
-    //Need to use loop to open multiple PDFs
+    //Need to use loop to open multipe PDFs
     
-    driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div[4]/div[1]/div[1]/div[1]/a")).click();
+    driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/a")).click();
  
     Thread.sleep(1000);
     
@@ -168,54 +173,54 @@ for (String handle : handles1) {
     
     File scrFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     //The below method will save the screen shot in d drive with name "screenshot.png"
-    FileUtils.copyFile(scrFile1, new File("D:\\Selenium_Screenshot\\aa.png"));
-    System.out.println("Screenshot taken");
+    FileUtils.copyFile(scrFile1, new File("D:\\Selenium Screenshot\\Screenshot2.png"));
+    System.out.println("Screenshot of detail page of search result");
     Thread.sleep(1000);
     
     
-    
-    //Open all the pdf present under the browse section
-    
-    Thread.sleep(1000);
-    
-    int i;
-    
-    for (i=1;i<=11;i++)
+    String[] links = null;
+    int linksCount = 0;
+    List<WebElement> linksize = driver.findElements(By.xpath("//a[@role = 'button']")); 
+    linksCount = linksize.size();
+    System.out.println("Total no of links Available: "+linksCount);
+    links= new String[linksCount];
+    System.out.println("List of links Available: ");  
+    // print all the links from webpage 
+    for(int i=0;i<linksCount;i++)
     {
-        String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN); 
-        driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/a["+ i +"]")).sendKeys(selectLinkOpeninNewTab);
+    links[i] = linksize.get(i).getAttribute("href");
+  // System.out.println(all_links_webpage.get(i).getAttribute("href"));
+    } 
+    // navigate to each Link on the webpage
+    
+    for(int i=1;i<=linksCount;i++)
+    
+    {  
+    	
+    	driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/a["+ i +"]")).click();	
+        File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        //The below method will save the screen shot in C drive with name "screenshot.png"
+        FileUtils.copyFile(scrFile2, new File("D:\\Selenium Screenshot\\ScreenshotPdfs["+ i +"].png"));
+        System.out.println("Screenshot of pdf ["+ i +"]");
         Thread.sleep(1000);
-    }
-    
-     
-    //Focus on the new tab
-     int j;
-     for(j=0;j<=13;j++)
-     {
-       ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-       driver.switchTo().window(tabs.get(j));
-       ((JavascriptExecutor) driver)
-       .executeScript("window.scrollTo(10, -document.body.scrollHeight)");
-       //Thread.sleep(2000);
-       
-       for(int a= 1; a<=11;a++)
-       {
-       File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-       ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, -document.body.scrollHeight)");
-       FileUtils.copyFile(scrFile2, new File("D:\\Selenium_Screenshot\\screenshot["+ a +"].png"));
-       
-     }
-     
-       
-       
-           //Screenshot of the pdf including title of the page
-       
-    
-           //File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-           //The below method will save the screen shot in d drive with name "screenshot.png"
-      //FileUtils.copyFile(scrFile2, new File("C:\\Users\\ntiwari\\Desktop\\Selenium Screenshot\\bb.png"));
-          
-       }
+        driver.navigate().back();
       
-     }
+    }
 }
+}
+
+
+
+     
+
+
+
+
+
+
+
+	
+
+
+
+
