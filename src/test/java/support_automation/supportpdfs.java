@@ -138,13 +138,13 @@ release.selectByIndex(1);
 
 Select select = new Select(driver.findElement(By.xpath("//*[@id=\"DocType\"]")));
 //Select select = new Select(selectList);
-select.selectByVisibleText("Administration & Installation");
-select.selectByVisibleText("Configuration Options");
-select.selectByVisibleText("Developer Guides");
-select.selectByVisibleText("Matrices");
-select.selectByVisibleText("Product Calendar");
-select.selectByVisibleText("Read This First / Release Notes");
-select.selectByVisibleText("User and Reference Guides");
+select.selectByVisibleText(System.getProperty("Document_Type"));
+//select.selectByVisibleText("Configuration Options");
+//select.selectByVisibleText("Developer Guides");
+//select.selectByVisibleText("Matrices");
+//select.selectByVisibleText("Product Calendar");
+//select.selectByVisibleText("Read This First / Release Notes");
+//select.selectByVisibleText("User and Reference Guides");
 
 //driver.findElement(By.xpath("//*[@id=\"DocType\"]/option[i]")).sendKeys(Keys.ENTER);
 //*[@id="DocType"]/option[3]
