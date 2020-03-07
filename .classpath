@@ -23,15 +23,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/amc/.m2/repository/org/apache/maven/surefire/maven-surefire-common/3.0.0-M3/maven-surefire-common-3.0.0-M3.jar" sourcepath="C:/Users/amc/.m2/repository/org/apache/maven/surefire/maven-surefire-common/3.0.0-M3/maven-surefire-common-3.0.0-M3-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.apache.maven.surefire"/>
-			<attribute name="maven.artifactId" value="maven-surefire-common"/>
-			<attribute name="maven.version" value="3.0.0-M3"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/loc-lab/Downloads/selenium-java-3.14.0/client-combined-3.14.0.jar"/>
 	<classpathentry kind="lib" path="D:/share/Sel/selenium-java-3.14.0/client-combined-3.14.0.jar"/>
 	<classpathentry kind="lib" path="D:/share/Sel/selenium-java-3.14.0/client-combined-3.14.0-sources.jar"/>

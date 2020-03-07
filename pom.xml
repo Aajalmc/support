@@ -46,7 +46,8 @@
 						<baseUrl>${selenium.base.url}</baseUrl>
 						<Id>${Id}</Id>
 						<Password>${Password}</Password>
-						<Title>${Title}</Title>
+						<Product>${Product}</Product>
+					    <Document_Type>${Document_Type}</Document_Type>
 					</systemPropertyVariables>
 				</configuration>
 				<executions>

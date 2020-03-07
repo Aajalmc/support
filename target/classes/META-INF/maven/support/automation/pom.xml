@@ -46,7 +46,8 @@
 						<baseUrl>${selenium.base.url}</baseUrl>
 						<Id>${Id}</Id>
 						<Password>${Password}</Password>
-						<Title>${Title}</Title>
+						<Product>${Product}</Product>
+					    <Document_Type>${Document_Type}</Document_Type>
 					</systemPropertyVariables>
 				</configuration>
 				<executions>
@@ -85,6 +86,16 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M3</version>
 				<type>maven-plugin</type>
+			</dependency>
+			<dependency>
+     			<groupId>commons-io</groupId>
+     			<artifactId>commons-io</artifactId>
+     			<version>2.4</version>
+ 			</dependency>
+ 			<dependency>
+   				 <groupId>ru.yandex.qatools.ashot</groupId>
+    			<artifactId>ashot</artifactId>
+    			<version>1.5.4</version>
 			</dependency>
 		</dependencies>
 </project>

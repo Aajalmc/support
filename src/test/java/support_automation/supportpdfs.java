@@ -1,15 +1,11 @@
 package support_automation;
 
 import java.awt.AWTException;
-import java.awt.Robot;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 import javax.imageio.ImageIO;
-
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -21,37 +17,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
-//comment the above line and uncomment below line to use Chrome
+import java.util.List;
+
 public class supportpdfs {
-	
+
+private int index;
+
+@SuppressWarnings("unlikely-arg-type")
 @Test
-public void test() throws InterruptedException, AWTException, IOException {
+public void test()  throws InterruptedException, AWTException, IOException {
 	
 System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
 
 WebDriver driver = new ChromeDriver();
+
+driver.manage().window().maximize();
+driver.manage().window().setSize(new org.openqa.selenium.Dimension(1920,1080)); 
 
 //Implicit wait
 
 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 ChromeOptions options = new ChromeOptions();
-
 options.addArguments("--incognito");
-
 DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-
 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
-driver.manage().window().maximize();
 
 String baseUrl = "https://support.ptc.com/";
 
@@ -89,9 +87,10 @@ JavascriptExecutor js = (JavascriptExecutor) driver;
 
 js.executeScript("window.scrollBy(0,1000)");
 
-//Thread.sleep(2000);
 
-WebElement Browse = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div/div[2]"));
+//Used Absolute Xapth as the Relative Xpath was not working - span[@class='iconlink-caption']
+
+WebElement Browse = driver.findElement(By.xpath("/html/body/div[3]/div/div[4]/div/div[2]/div/a/div"));
 
 Browse.click();
 
@@ -106,20 +105,87 @@ for (String handle : handles) {
 }
 
 
-WebElement Search = driver.findElement(By.id("searchInput"));
+//Search Through Filter By
 
-Search.sendKeys(System.getProperty("Title"));
+((JavascriptExecutor) driver).executeScript("window.focus();");
+WebDriverWait wait = new WebDriverWait(driver, 60);
 
-//Thread.sleep(2000);
+//Now find the client input and set value
+//Enter the product to be searched 
+WebElement client = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"Product\"]")));
+//client.sendKeys("ThingWorx Navigate");
 
-Search.sendKeys(Keys.ENTER);
+client.sendKeys(System.getProperty("Product"));
 
-System.out.println("Title searched successfully");
+Thread.sleep(2000);
 
+//Now find all the showing option   
+List<WebElement> dropdownOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("/html/body/ul/li/div")));
+
+//Now select the first option
+dropdownOptions.get(0).click();
+
+//Select the release version
+
+Select release = new Select( driver.findElement(By.xpath("//*[@id=\"Release\"]")));
+
+release.selectByIndex(1);
+
+//Select document type
+
+//New code start
+
+
+Select select = new Select(driver.findElement(By.xpath("//*[@id=\"DocType\"]")));
+//Select select = new Select(selectList);
+select.selectByVisibleText("Administration & Installation");
+select.selectByVisibleText("Configuration Options");
+select.selectByVisibleText("Developer Guides");
+select.selectByVisibleText("Matrices");
+select.selectByVisibleText("Product Calendar");
+select.selectByVisibleText("Read This First / Release Notes");
+select.selectByVisibleText("User and Reference Guides");
+
+//driver.findElement(By.xpath("//*[@id=\"DocType\"]/option[i]")).sendKeys(Keys.ENTER);
+//*[@id="DocType"]/option[3]
+//*[@id="DocType"]/option[2]
+//*[@id="DocType"]/option[8]
+
+//*[@id="DocType"]/option[5]
+
+
+//Select select = new Select(driver.findElement(By.xpath("//*[@id=\"DocType\"]")));
+//WebElement option = select.getFirstSelectedOption();
+//option.sendKeys("");
+//String defaultItem = option.getText();
+//System.out.println(defaultItem);
+
+
+
+//End 
+
+
+//WebElement Document_Type=driver.findElement(By.xpath("//*[@id=\"DocType\"]"));
+
+//Select document =new Select(Document_Type);
+
+//document.getAllSelectedOptions();
+
+//List<WebElement> dropdown=document.getOptions();
+
+//for(int i=0;i<dropdown.size();i++){
+
+//String drop_down_values=dropdown.get(i).getText();
+
+//System.out.println("dropdown values are "+drop_down_values);
+//client.sendKeys(System.getProperty(drop_down_values));
+
+driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[1]/form/div[7]/div/div[2]/button")).click();
+
+
+System.out.println("Search successful");
 Set<String> handles1 = driver.getWindowHandles();
-
 String currentHandle1 = driver.getWindowHandle();
-
 for (String handle : handles1) {
 
  if (!handle .equals(currentHandle1))
@@ -128,152 +194,126 @@ for (String handle : handles1) {
  }
 }
    //Close pop -up
-    //Thread.sleep(6000);
-    
     driver.switchTo().frame("sc_footer");
-    
     driver.switchTo().defaultContent();
     
-    //Thread.sleep(10000);
     
-    driver.findElement(By.xpath("//*[@id=\"ptcapp\"]/div[5]/div/div[5]/a[1]")).click();  
+    String TitleofPage=driver.getTitle();
+	
+	System.out.println(TitleofPage);
+	
+	if (TitleofPage.contains("Search"))
+	{
+	
+		WebElement popupwin  =driver.findElement(By.xpath("/html/body/div[5]/div/div[5]/a[1]"));
+		if (popupwin.isDisplayed())
+		{
+			popupwin.click();
+			System.out.println("Pop up Window displayed");
+		}
+
+		else
+		{
+		System.out.println("Pop up Window not displayed");
+		}
+
+		
+	}
+	else
+	{
+		System.out.println("Browse documentation Icon not displayed");
+	}
+
     
-    //Thread.sleep(1000);  
+    //driver.findElement(By.xpath("//*[@id=\"ptcapp\"]/div[5]/div/div[5]/a[1]")).click();
+    
     
     //Click on one week ago filter 
+		
+	/*System.out.println("Scroll Down Page");
     
     JavascriptExecutor js1 = (JavascriptExecutor) driver;
 
-    js1.executeScript("window.scrollBy(0,5000)");
+    js1.executeScript("window.scrollBy(0,7000)");
+ 
+    WebElement oneweek = driver.findElement(By.xpath("//*[@id=\"LastModifiedTime_ChkGroup_One Month Ago - One Week Ago\"]"));
     
-    //Thread.sleep(2000);
-    
-    driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[2]/div/div/div/div/div[2]/div/div[8]/fieldset/div/div[5]/label/input")).click();
-    
-    //Thread.sleep(1000);
-  
+    if (oneweek.isEnabled() && oneweek.isDisplayed())
+	{
+		oneweek.click();
+		System.out.println("Checkbox Element not Enable and displayed");
+	}
+	else
+	{
+		System.out.println("checkbox Element not Enable and displayed");
+	}
+
     //Click on apply link
-    driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[2]/div/div/div/div/div[2]/div/div[8]/fieldset/div/div[7]/div/a[1]/span")).click();
-    
-    Thread.sleep(3000);
-  
-	//Mouse hover for first element 
-    
-    JavascriptExecutor jse = (JavascriptExecutor) driver;
-	jse.executeScript("window.scrollBy(-500000,0)", "");
-	
-    
-    //Thread.sleep(1000);
-    
-	WebElement ele = driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/a"));
-	
-	//Create object 'action' of an Actions class
-	Actions action = new Actions(driver);
-	
-	//Mousehover on an element
-	action.moveToElement(ele).perform();
-	
-	Thread.sleep(3000);
-	
-	
-	
-	//Adding new methid for Screenshot of the first element
-	
-	Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.scaling(1)).takeScreenshot(driver);
-	ImageIO.write(fpScreenshot.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot1.png"));
-		
-	//Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
-	
-    //ImageIO.write(fpScreenshot.getImage(),"PNG",new File("E:\\Selenium_Screenshot\\Screenshot1.png"));
-    
-    System.out.println("Screenshot taken of the search result");
-    
-    //Thread.sleep(1000);
-    
-    //Click on the pdf link
-    //Need to use loop to open multipe PDFs
-    
-    driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/a")).click();
- 
-    Thread.sleep(1000);
-    
-    JavascriptExecutor js3 = (JavascriptExecutor) driver;
-
-    js3.executeScript("window.scrollBy(1000,1000)");
-    
-    //Adding new method for taking screenshot of the search detail page
-    
-    Thread.sleep(3000);
-    
-    Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.scaling(1)).takeScreenshot(driver);
-    ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot2.png"));
-
-    //Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
    
-    //ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("E:\\Selenium_Screenshot\\Screenshot2.png"));
+    WebElement ApplyButton=driver.findElement(By.xpath("//div[@id='ctl00_ctl35_g_cda8acf7_705f_490f_bdac_8c607fbd3e66_csr7']//span[@class='ui-button-text'][contains(text(),'Apply')]"));
     
-    System.out.println("Screenshot of detail page of search result");
+
+	if (ApplyButton.isDisplayed() && ApplyButton.isEnabled())
+	{
+		ApplyButton.click();
+		System.out.println("Apply button Enable and displayed");
+	}
+
+	else
+	{
+		System.out.println("Apply button not Enable and displayed");
+	}
+    */
     
+    //Scroll Page left to right 
+   
+    //JavascriptExecutor jse = (JavascriptExecutor) driver;
+  	//jse.executeScript("window.scrollBy(-500000,0)", "");
+	
+
+   //Mouse Hover on first element and take screenshot
+ 
+    //WebElement ele = driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/a"));
+    
+      Thread.sleep(1000);
+      
+      File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+      FileUtils.copyFile(screenshotFile, new File("D:\\Selenium Screenshot\\Screenshot1.png"));
+    
+	  //Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
+	  //ImageIO.write(fpScreenshot.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot1.png"));
+	  System.out.println("Screenshot taken of the search result");
+ 
+    
+    //Click on the first search link
+    
+    driver.findElement(By.xpath("//*[@id=\"ctl00_ctl35_g_2e89b8bd_7b92_4179_882c_cdd0b65cdad5_csr3_itemTitleLink\"]")).click();
+ 
     //Thread.sleep(1000);
     
-    String[] links = null;
+    //JavascriptExecutor js3 = (JavascriptExecutor) driver;
+    //js3.executeScript("window.scrollBy(1000,1000)");
     
-    int linksCount = 0;
+  
+    Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
+    ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("D:\\Selenium Screenshot\\Screenshot2.png"));
     
-    List<WebElement> linksize = driver.findElements(By.xpath("//a[@role = 'button']")); 
     
-    linksCount = linksize.size();
+    //Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.scaling(1)).takeScreenshot(driver);
+    //ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("C:\\Users\\ntiwari\\Desktop\\Selenium Screenshot\\Screenshot2.png"));
+	System.out.println("Screenshot of detail page of search result");
+    //Thread.sleep(1000);
     
-    System.out.println("Total no of links Available: "+linksCount);
-    
-    links= new String[linksCount];
-    
-    System.out.println("Taking screenshots of "+linksCount+" PDFs: "); 
-    
-    // print all the links from webpage 
-    
-    for(int i=0;i<linksCount;i++)
-    {
-    links[i] = linksize.get(i).getAttribute("href");
-    
-    } 
-    // navigate to each Link on the webpage
- 
-    for(int i=1;i<=linksCount;i++)
-    {  
-        driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/a["+ i +"]")).click();	
-        
-    	Thread.sleep(30000);
-    	
-    	 
-        Robot robot = new Robot();
-        
-        robot.mouseWheel(15);
-        
-       File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        
-        //The below method will save the screen shot in C drive with name "screenshot.png"
-        
-        FileUtils.copyFile(scrFile2, new File("D:\\Selenium_Screenshot\\ScreenshotPdfs["+ i +"].png"));
-    	
-    	//Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
-    	 //Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.scaling(1)).takeScreenshot(driver);
-    	   
-         //ImageIO.write(fpScreenshot2.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\ScreenshotPdfs["+ i +"].png"));
-        
-         System.out.println("Screenshot of pdf ["+ i +"]");
-        
-        //Thread.sleep(2000);
-        
-        driver.navigate().back();
-      
-    }
-    System.out.println("Screenshots are availabe here : \\ppumsv-Win16Jen\\Selenium_Screenshot");}
+  
 }
 
+}
+    
+    
 
 
-     
+
+
 
 
 
