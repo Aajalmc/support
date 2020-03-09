@@ -116,6 +116,7 @@ WebElement client = wait.until(ExpectedConditions.visibilityOfElementLocated(By.
 //client.sendKeys("ThingWorx Navigate");
 
 client.sendKeys(System.getProperty("Product"));
+System.out.println(System.getProperty("Product"));
 
 Thread.sleep(2000);
 
@@ -139,12 +140,7 @@ release.selectByIndex(1);
 Select select = new Select(driver.findElement(By.xpath("//*[@id=\"DocType\"]")));
 //Select select = new Select(selectList);
 select.selectByVisibleText(System.getProperty("Document_Type"));
-//select.selectByVisibleText("Configuration Options");
-//select.selectByVisibleText("Developer Guides");
-//select.selectByVisibleText("Matrices");
-//select.selectByVisibleText("Product Calendar");
-//select.selectByVisibleText("Read This First / Release Notes");
-//select.selectByVisibleText("User and Reference Guides");
+System.out.println(System.getProperty("Document_Type"));
 
 //driver.findElement(By.xpath("//*[@id=\"DocType\"]/option[i]")).sendKeys(Keys.ENTER);
 //*[@id="DocType"]/option[3]
@@ -278,7 +274,7 @@ for (String handle : handles1) {
       Thread.sleep(1000);
       
       File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-      FileUtils.copyFile(screenshotFile, new File("D:\\Selenium Screenshot\\Screenshot1.png"));
+      FileUtils.copyFile(screenshotFile, new File("D:\\Selenium_Screenshot\\Screenshot1.png"));
     
 	  //Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
 	  //ImageIO.write(fpScreenshot.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot1.png"));
@@ -296,7 +292,7 @@ for (String handle : handles1) {
     
   
     Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
-    ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("D:\\Selenium Screenshot\\Screenshot2.png"));
+    ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot2.png"));
     
     
     //Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.scaling(1)).takeScreenshot(driver);
