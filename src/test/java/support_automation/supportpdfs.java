@@ -262,9 +262,8 @@ for (String handle : handles1) {
     
     //Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.scaling(1)).takeScreenshot(driver);
     //ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("C:\\Users\\ntiwari\\Desktop\\Selenium Screenshot\\Screenshot2.png"));
-	System.out.println("Screenshot of detail page of search result");
-    Thread.sleep(1000);
-	System.out.printf("%100s\n", "Screenshots are availabe here : \\ppumsv-Win16Jen\\Selenium_Screenshot");
+	System.out.println("Screenshot taken for detail page of search result");
+	System.out.println("Screenshots are availabe here : \\\\ppumsv-Win16Jen\\\\Selenium_Screenshot");
   
 }
 
