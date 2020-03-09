@@ -130,51 +130,15 @@ dropdownOptions.get(0).click();
 
 Select release = new Select( driver.findElement(By.xpath("//*[@id=\"Release\"]")));
 release.selectByVisibleText(System.getProperty("Release"));;
+System.out.println(System.getProperty("Release"));
 
 //Select document type
-
-//New code start
-
-
 Select select = new Select(driver.findElement(By.xpath("//*[@id=\"DocType\"]")));
-//Select select = new Select(selectList);
 select.selectByVisibleText(System.getProperty("Document_Type"));
 System.out.println(System.getProperty("Document_Type"));
 
-//driver.findElement(By.xpath("//*[@id=\"DocType\"]/option[i]")).sendKeys(Keys.ENTER);
-//*[@id="DocType"]/option[3]
-//*[@id="DocType"]/option[2]
-//*[@id="DocType"]/option[8]
 
-//*[@id="DocType"]/option[5]
-
-
-//Select select = new Select(driver.findElement(By.xpath("//*[@id=\"DocType\"]")));
-//WebElement option = select.getFirstSelectedOption();
-//option.sendKeys("");
-//String defaultItem = option.getText();
-//System.out.println(defaultItem);
-
-
-
-//End 
-
-
-//WebElement Document_Type=driver.findElement(By.xpath("//*[@id=\"DocType\"]"));
-
-//Select document =new Select(Document_Type);
-
-//document.getAllSelectedOptions();
-
-//List<WebElement> dropdown=document.getOptions();
-
-//for(int i=0;i<dropdown.size();i++){
-
-//String drop_down_values=dropdown.get(i).getText();
-
-//System.out.println("dropdown values are "+drop_down_values);
-//client.sendKeys(System.getProperty(drop_down_values));
-
+//Click on Search button
 driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[1]/form/div[7]/div/div[2]/button")).click();
 
 
@@ -269,6 +233,8 @@ for (String handle : handles1) {
    //Mouse Hover on first element and take screenshot
  
     //WebElement ele = driver.findElement(By.xpath("/html/body/form/div[3]/div/span[2]/div[1]/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div[1]/a"));
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//div[@class='ms-srch-sbLarge ms-srch-sb-border']")).click();
     
       Thread.sleep(1000);
       
@@ -297,8 +263,8 @@ for (String handle : handles1) {
     //Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.scaling(1)).takeScreenshot(driver);
     //ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("C:\\Users\\ntiwari\\Desktop\\Selenium Screenshot\\Screenshot2.png"));
 	System.out.println("Screenshot of detail page of search result");
-    //Thread.sleep(1000);
-    
+    Thread.sleep(1000);
+	System.out.printf("%100s\n", "Screenshots are availabe here : \\ppumsv-Win16Jen\\Selenium_Screenshot");
   
 }
 
