@@ -265,19 +265,38 @@ for (String handle : handles1) {
 	System.out.println("Screenshot taken for detail page of search result");
 	
 	//Click on English PDF icon
-	//driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();
-	//Thread.sleep(8000);
+	driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();
+	Thread.sleep(8000);
+	
+	WebElement shadowRoot1 = driver.findElement(By.id("wrapper"));
+	WebElement root2 = shadowRoot1.findElement(By.cssSelector("cr-icon-button"));
+	WebElement shadowRoot2 = expandRootElement(root2);
+	
+	WebElement root3 = shadowRoot2.findElement(By.id("icon"));
+	WebElement shadowRoot3 = expandRootElement(root3);
+	
+	
+	shadowRoot3.findElement(By.id("maskedImage")).click();
+	
+	
+	//code for screenshot
 	//Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
     //ImageIO.write(fpScreenshot2.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot3.png"));
-	//File screenshotFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-    //FileUtils.copyFile(screenshotFile1, new File("D:\\Selenium_Screenshot\\Screenshot3.png"));
+	File screenshotFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    FileUtils.copyFile(screenshotFile1, new File("D:\\Selenium_Screenshot\\Screenshot3.png"));
 	
-    //System.out.println("Screenshot taken of PDF first page");
+    System.out.println("Screenshot taken of PDF first page");
     
 	System.out.println("Screenshots are availabe here : \\\\ppumsv-Win16Jen\\Selenium_Screenshot");
   
 }
 
+public WebElement expandRootElement(WebElement element) {
+	WebDriver driver = new ChromeDriver();
+	WebElement ele = (WebElement) ((JavascriptExecutor)driver)
+.executeScript("return arguments[0].shadowRoot", element);
+	return ele;
+}
 }
     
     
