@@ -47,6 +47,7 @@
 						<Id>${Id}</Id>
 						<Password>${Password}</Password>
 						<Product>${Product}</Product>
+						<Product>${Release}</Product>
 					    <Document_Type>${Document_Type}</Document_Type>
 					</systemPropertyVariables>
 				</configuration>

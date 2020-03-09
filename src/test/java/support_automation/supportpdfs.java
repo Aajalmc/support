@@ -129,8 +129,7 @@ dropdownOptions.get(0).click();
 //Select the release version
 
 Select release = new Select( driver.findElement(By.xpath("//*[@id=\"Release\"]")));
-
-release.selectByIndex(1);
+release.selectByVisibleText(System.getProperty("Release"));;
 
 //Select document type
 
