@@ -265,14 +265,14 @@ for (String handle : handles1) {
 	System.out.println("Screenshot taken for detail page of search result");
 	
 	//Click on English PDF icon
-	driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();
-	Thread.sleep(8000);
+	//driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();
+	//Thread.sleep(8000);
 	//Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
     //ImageIO.write(fpScreenshot2.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot3.png"));
-	File screenshotFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-    FileUtils.copyFile(screenshotFile1, new File("D:\\Selenium_Screenshot\\Screenshot3.png"));
+	//File screenshotFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    //FileUtils.copyFile(screenshotFile1, new File("D:\\Selenium_Screenshot\\Screenshot3.png"));
 	
-    System.out.println("Screenshot taken of PDF first page");
+    //System.out.println("Screenshot taken of PDF first page");
     
 	System.out.println("Screenshots are availabe here : \\\\ppumsv-Win16Jen\\Selenium_Screenshot");
   
