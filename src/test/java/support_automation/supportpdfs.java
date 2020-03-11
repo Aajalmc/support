@@ -266,14 +266,14 @@ for (String handle : handles1) {
 	
 	//Click on English PDF icon
 	driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();
-	Thread.sleep(8000);
+	Thread.sleep(12000);
 	
 	
 	//code for screenshot
 	//Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
     //ImageIO.write(fpScreenshot2.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot3.png"));
 	File screenshotFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-    FileUtils.copyFile(screenshotFile1, new File("D:\\Selenium_Screenshot\\Screenshot3.png"));
+    FileUtils.copyFile(screenshotFile1, new File("D:\\Selenium Screenshot\\Screenshot3.png"));
 	
     System.out.println("Screenshot taken of PDF first page");
     
