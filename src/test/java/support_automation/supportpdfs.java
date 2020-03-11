@@ -40,7 +40,7 @@ System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
 WebDriver driver = new ChromeDriver();
 
 driver.manage().window().maximize();
-driver.manage().window().setSize(new org.openqa.selenium.Dimension(1920,1080)); 
+driver.manage().window().setSize(new org.openqa.selenium.Dimension(1080,1920)); 
 
 //Implicit wait
 
@@ -239,7 +239,7 @@ for (String handle : handles1) {
       Thread.sleep(1000);
       
       File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-      FileUtils.copyFile(screenshotFile, new File("D:\\Selenium_Screenshot\\Screenshot1.png"));
+      FileUtils.copyFile(screenshotFile, new File("D:\\Selenium Screenshot\\Screenshot1.png"));
     
 	  //Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
 	  //ImageIO.write(fpScreenshot.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot1.png"));
@@ -257,7 +257,7 @@ for (String handle : handles1) {
     
   
     Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
-    ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("D:\\Selenium_Screenshot\\Screenshot2.png"));
+    ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("D:\\Selenium Screenshot\\Screenshot2.png"));
     
     
     //Screenshot fpScreenshot1 = new AShot().shootingStrategy(ShootingStrategies.scaling(1)).takeScreenshot(driver);
@@ -268,16 +268,6 @@ for (String handle : handles1) {
 	driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();
 	Thread.sleep(8000);
 	
-	WebElement shadowRoot1 = driver.findElement(By.id("wrapper"));
-	WebElement root2 = shadowRoot1.findElement(By.cssSelector("cr-icon-button"));
-	WebElement shadowRoot2 = expandRootElement(root2);
-	
-	WebElement root3 = shadowRoot2.findElement(By.id("icon"));
-	WebElement shadowRoot3 = expandRootElement(root3);
-	
-	
-	shadowRoot3.findElement(By.id("maskedImage")).click();
-	
 	
 	//code for screenshot
 	//Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
@@ -287,16 +277,10 @@ for (String handle : handles1) {
 	
     System.out.println("Screenshot taken of PDF first page");
     
-	System.out.println("Screenshots are availabe here : \\\\ppumsv-Win16Jen\\Selenium_Screenshot");
+	System.out.println("Screenshots are availabe here : \\\\ppumsv-Win16Jen\\Selenium Screenshot");
   
 }
 
-public WebElement expandRootElement(WebElement element) {
-	WebDriver driver = new ChromeDriver();
-	WebElement ele = (WebElement) ((JavascriptExecutor)driver)
-.executeScript("return arguments[0].shadowRoot", element);
-	return ele;
-}
 }
     
     
