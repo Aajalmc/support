@@ -270,7 +270,7 @@ for (String handle : handles1) {
 	driver.manage().window().setSize(new org.openqa.selenium.Dimension(1080,1920)); 
 	Thread.sleep(1000);
 	//code for screenshot
-	Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2)).takeScreenshot(driver);
+	Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
     ImageIO.write(fpScreenshot2.getImage(),"PNG",new File("D:\\Selenium Screenshot\\Screenshot3.png"));
 	//File screenshotFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     //FileUtils.copyFile(screenshotFile1, new File("D:\\Selenium Screenshot\\Screenshot3.png"));
