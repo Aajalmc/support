@@ -269,12 +269,13 @@ for (String handle : handles1) {
     //ImageIO.write(fpScreenshot1.getImage(),"PNG",new File("C:\\Users\\ntiwari\\Desktop\\Selenium Screenshot\\Screenshot2.png"));
 	System.out.println("Screenshot taken for detail page of search result");
 	
+	//Resizing browser may trigger PDF ontainer to resize --vpotturu 17Mar20
+	driver.manage().window().setSize(new org.openqa.selenium.Dimension(500,500));
+	
 	//Click on English PDF icon
 	driver.findElement(By.xpath("//span[contains(text(),'English')]")).click();
 	Thread.sleep(12000);
 	//driver.manage().window().setSize(new org.openqa.selenium.Dimension(1080,1920));
-	//Resizing browser may trigger PDF ontainer to resize --vpotturu 17Mar20
-	//driver.manage().window().setSize(new org.openqa.selenium.Dimension(500,500));
 	Thread.sleep(1000);
 	//code for screenshot
 	Screenshot fpScreenshot2 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
