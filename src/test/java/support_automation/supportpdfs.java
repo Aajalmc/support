@@ -41,8 +41,11 @@ WebDriver driver = new ChromeDriver();
 
 //maximizing window - not helped -vpotturu 17Mar20
 //driver.manage().window().maximize();
-//let's reduce window size - hope resize helps -vpotturu 17Mar20
-driver.manage().window().setSize(new org.openqa.selenium.Dimension(500,500)); 
+
+//driver.manage().window().setSize(new org.openqa.selenium.Dimension(1080,1920));
+
+//let's reduce window size - hope resize helps -vpotturu 17Mar20 - Below line worked
+//driver.manage().window().setSize(new org.openqa.selenium.Dimension(500,500));
 
 //Implicit wait
 
