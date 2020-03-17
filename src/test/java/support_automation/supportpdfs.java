@@ -39,7 +39,8 @@ System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
 
 WebDriver driver = new ChromeDriver();
 
-driver.manage().window().maximize();
+//maximizing window - not helped
+//driver.manage().window().maximize();
 driver.manage().window().setSize(new org.openqa.selenium.Dimension(1080,1920)); 
 
 //Implicit wait
