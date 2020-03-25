@@ -95,7 +95,7 @@ js.executeScript("window.scrollBy(0,1000)");
 
 //Used Absolute Xapth as the Relative Xpath was not working - span[@class='iconlink-caption']
 
-WebElement Browse = driver.findElement(By.xpath("/html/body/div[3]/div/div[4]/div/div[2]/div/a/div"));
+WebElement Browse = driver.findElement(By.xpath("(//div[@class='col-sm-3 support-icon-scale5'])[2]/div/a/div"));
 
 Browse.click();
 
